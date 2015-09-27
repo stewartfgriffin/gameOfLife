@@ -30,3 +30,8 @@
 
 # Debug files
 *.dSYM/
+
+#vim fluff
+*~
+*.swp
+*.swo
