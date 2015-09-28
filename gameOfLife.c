@@ -187,7 +187,7 @@ errorFlag runLife(grid *g, int maxTurns) {
     if (!current) return FAILED;
     grid *next;
     for (int turn = 0; maxTurns == 0 || turn < maxTurns; turn++) {
-        printf("Life as we know it in turn %d:\n", turn);
+        printf("Life as we know it in turn %d:\n", turn+1);
         displayGrid(current);
         printf("\n");
         next = copyGrid(current);
