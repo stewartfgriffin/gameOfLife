@@ -5,7 +5,9 @@ Written mainly to practise C programming.
 *Example usage*: $ ./gameOfLife -t=25 -w=9 -h=9 -p=0,1#1,2#2,0#2,1#2,2
 
 *To compile*: 
+
 1) make sure gcc is installed. 
+
 2) run: $ make
 
 *options*:
