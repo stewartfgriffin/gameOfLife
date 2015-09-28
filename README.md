@@ -1,4 +1,4 @@
-Simple Conway's game of life. Written mainly to practise C programming.
+Simple Conway's Game of Life. Written mainly to practise C programming.
 
 Usage: ./gameOfLife -t=25 -w=9 -h=9 -p=0,1#1,2#2,0#2,1#2,2
 
