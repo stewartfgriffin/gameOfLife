@@ -10,7 +10,7 @@ Written mainly to practise C programming.
 
 2) run: $ make
 
-*options*:
+*Options*:
 ---------
 *-t*: number of turns to run life for
 
