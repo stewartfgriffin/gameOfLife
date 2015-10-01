@@ -1,2 +1,7 @@
-gameOfLife: gameOfLife.c
-	gcc gameOfLife.c -o gameOfLife -std=gnu11 -Werror -g
+P=gameOfLife
+OBJECTS=point.o
+CFLAGS= -g -Wall -Werror -o3 -std=gnu11
+LDLIBS=
+CC=gcc
+
+$(P): $(OBJECTS)

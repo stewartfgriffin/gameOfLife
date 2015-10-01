@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "point.h"
+#include "error.h"
+
 #define UNLIMITED_TURNCOUNT 0
 #define DEFAULT_MAX_TURNS 1
 #define DEFAULT_GRID_WIDTH 20
@@ -13,59 +16,6 @@
 #define LIVE true
 #define DEAD false
 typedef bool health;
-
-#define SUCCESS true
-#define FAILED false
-typedef bool errorFlag;
-
-typedef struct point {
-    int x, y;
-} point;
-
-point *createPoint(int x, int y) {
-    point *p = malloc(sizeof(point));
-    if (!p) return NULL;
-    p->x = x;
-    p->y = y;
-    return p;
-}
-
-void releasePoint(point *p){
-    if(!p) return;
-    free(p);
-}
-
-typedef struct pointNode {
-    point *value;
-    struct pointNode *next;
-} pointNode;
-
-pointNode *createPointNode(point *p, pointNode *next) {
-    pointNode *pn = malloc(sizeof(pointNode));
-    if (!pn) return pn;
-    pn->value = p;
-    pn->next = next;
-    return pn;
-}
-
-void releasePointNode(pointNode *pn) {
-    if (!pn) return;
-    pointNode *current = pn;
-    int i = 0;
-    while (current) {
-        pointNode *next = current->next;
-        releasePoint(current->value);
-        free(current);
-        current = next;
-    }
-}
-
-pointNode *copyPointNode(pointNode *pn) {
-    pointNode *copy = malloc(sizeof(pointNode));
-    copy->value = pn->value;
-    copy->next = pn->next;
-    return copy;
-}
 
 typedef struct config {
     int width, height, maxTurns;
@@ -143,6 +93,7 @@ grid *copyGrid(grid *g) {
 errorFlag createLife(grid *g, int x, int y) {
     if (x < 0 || y < 0 || x > g->width-1 || y > g->height-1) return FAILED;    
     g->cells[x][y] = LIVE;
+    return SUCCESS;
 }
 
 int neighbourCount(grid *g, int x, int y) {
@@ -321,7 +272,7 @@ errorFlag parseArgs(config *cfg, int argc, char** argv) {
     return SUCCESS;
 }
 
-void main(int argc, char** argv) {
+int main(int argc, char** argv) {
     config *cfg = NULL;
     errorFlag e = SUCCESS;
     cfg = createConfig(
