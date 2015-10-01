@@ -1,5 +1,5 @@
 P=gameOfLife
-OBJECTS=point.o
+OBJECTS=parseArgs.o point.o config.o grid.o
 CFLAGS= -g -Wall -Werror -o3 -std=gnu11
 LDLIBS=
 CC=gcc
